@@ -54,13 +54,13 @@ function App() {
               interactive={false}
               mixBlendMode="screen"
             />*/}
-            <Silk
+            {396<window.innerWidth&&<Silk
               speed={3}
               scale={0.85}
               color="#4954bd"
               noiseIntensity={0.1}
               rotation={2.78}
-            />
+            />}
           </div>
           <div className='absolute z-20 px-15'>
             <GlassIcons items={items}/>

@@ -62,7 +62,7 @@ const socialItems = [
       <HashRouter>
         <div className={classForContainer}>
       
-          {mobile&&<><div className="absolute inset-0 z-0 flex-grow overflow-y-auto">
+          {mobile&&<div className="absolute inset-0 z-0 flex-grow overflow-y-auto">
             <Silk
               speed={3}
               scale={0.85}
@@ -70,10 +70,10 @@ const socialItems = [
               noiseIntensity={0.1}
               rotation={2.78}
             />
-          </div>
+          </div>}
           <div className={classForIcons}>
             <GlassIcons items={items}/>
-          </div></>}
+          </div>
           
           
             <Routes>

@@ -29,7 +29,7 @@ const socialItems = [
   const [mobile, setMobile] = useState(true)
   const [classForIcons, setClassForIcons] = useState('grid gap-[5em] grid-cols-3 md:grid-cols-3 mx-auto py-[3em] overflow-visible relative z-10 p-10')
   const [classForContainer, setClassForContainer] = useState("absolute inset-0 overflow-y-auto")
-  const [classForGlassCont, setClassForGlassCont] = useState("absolute z-20 px-15")
+  const [classForGlassCont, setClassForGlassCont] = useState("absolute z-20 px-5")
   const items = [
     {
       label: "Home",

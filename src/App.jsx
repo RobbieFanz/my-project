@@ -62,7 +62,7 @@ function App() {
               rotation={2.78}
             />
           </div>
-          <div className='absolute z-20 px-30'>
+          <div className='absolute z-20 px-15'>
             <GlassIcons items={items}/>
           </div>
           

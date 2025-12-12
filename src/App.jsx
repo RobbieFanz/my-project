@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Aurora from './components/aurora'
@@ -13,7 +13,22 @@ import { AboutMe } from './components/aboutMe'
 //b1544f
 
 function App() {
-  const [count, setCount] = useState(0)
+  const menuItems = [
+  { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
+  { label: 'About', ariaLabel: 'Learn about us', link: '/about' },
+  { label: 'Services', ariaLabel: 'View our services', link: '/' },
+  { label: 'Contact', ariaLabel: 'Get in touch', link: '/' }
+];
+const socialItems = [
+  { label: 'Twitter', link: 'https://twitter.com' },
+  { label: 'GitHub', link: 'https://github.com' },
+  { label: 'LinkedIn', link: 'https://linkedin.com' }
+];
+
+
+  const [mobile, setMobile] = useState(true)
+  const [classForIcons, setClassForIcons] = useState('absolute z-20 px-15')
+  const [classForContainer, setClassForContainer] = useState("absolute inset-0 overflow-y-auto")
   const items = [
     {
       label: "Home",
@@ -35,36 +50,31 @@ function App() {
     },
 ];
 
+  useEffect(()=>{
+    if(500>window.innerWidth){
+      setMobile(false)
+      setClassForIcons('')
+    }
+  },[])
+
   return (
     <>
       <HashRouter>
-        <div className="absolute inset-0 overflow-y-auto">
+        <div className={classForContainer}>
       
-          <div className="absolute inset-0 z-0 flex-grow overflow-y-auto">
-          {/* <LightPillar
-              topColor="#864fb1"
-              bottomColor="#307f95"
-              intensity={.5}
-              rotationSpeed={0.2}
-              glowAmount={0.005}
-              pillarWidth={6.0}
-              pillarHeight={0.2}
-              noiseIntensity={0}
-              pillarRotation={70}
-              interactive={false}
-              mixBlendMode="screen"
-            />*/}
-            {396<window.innerWidth&&<Silk
+          {mobile&&<><div className="absolute inset-0 z-0 flex-grow overflow-y-auto">
+            <Silk
               speed={3}
               scale={0.85}
               color="#4954bd"
               noiseIntensity={0.1}
               rotation={2.78}
-            />}
+            />
           </div>
-          <div className='absolute z-20 px-15'>
+          <div className={classForIcons}>
             <GlassIcons items={items}/>
-          </div>
+          </div></>}
+          
           
             <Routes>
               <Route path='/' element={<Contacts/>}/>

@@ -29,6 +29,7 @@ const socialItems = [
   const [mobile, setMobile] = useState(true)
   const [classForIcons, setClassForIcons] = useState('grid gap-[5em] grid-cols-3 md:grid-cols-3 mx-auto py-[3em] overflow-visible relative z-10 p-10')
   const [classForContainer, setClassForContainer] = useState("absolute inset-0 overflow-y-auto")
+  const [classForGlassCont, setClassForGlassCont] = useState("absolute z-20 px-15")
   const items = [
     {
       label: "Home",
@@ -54,13 +55,15 @@ const socialItems = [
     if(500>window.innerWidth){
       setMobile(false)
       setClassForIcons('grid gap-[1em] grid-cols-3 md:grid-cols-3 mx-auto py-[3em] overflow-visible relative z-10 p-1')
+      setClassForContainer('flex justify-center items-start h-screen')
+      setClassForGlassCont('absolute z-20')
     }
   },[])
 
   return (
     <>
       <HashRouter>
-        <div className="absolute inset-0 overflow-y-auto">
+        <div className={classForContainer}>
       
           {mobile&&<div className="absolute inset-0 z-0 flex-grow overflow-y-auto">
             <Silk
@@ -71,7 +74,7 @@ const socialItems = [
               rotation={2.78}
             />
           </div>}
-          <div className='absolute z-20 px-15'>
+          <div className={classForGlassCont}>
             <GlassIcons items={items} className={classForIcons}/>
           </div>
           

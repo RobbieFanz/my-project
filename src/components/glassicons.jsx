@@ -25,7 +25,7 @@ const GlassIcons = ({ items, className }) => {
   };
 
   return (
-    <div className={`grid gap-[5em] grid-cols-3 md:grid-cols-3 mx-auto py-[3em] overflow-visible relative z-10 p-10${className || ''}`}>
+    <div className={`grid gap-[1em] grid-cols-3 md:grid-cols-3 mx-auto py-[3em] overflow-visible relative z-10 p-1${className || ''}`}>
       {items.map((item, index) => (
         <button
           key={index}

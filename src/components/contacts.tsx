@@ -11,7 +11,7 @@ export function Contacts(){
                     <p className="text-lg md:text-4xl lg:text-6xl text-white tracking-tighter font-semibold">
 
                             My name is Robert Fanzutti<br/>
-                            Please take a look around
+                            This website is still under construction and is just a demo
 
                     </p>
                     <p className="text-lg md:text-2xl lg:text-3xl text-white tracking-tighter">

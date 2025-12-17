@@ -1,3 +1,27 @@
 @import "tailwindcss";
 
 @theme {  --breakpoint-xs: 31rem; }
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+
+  /* vertical centering */
+  align-items: center;
+
+  /* reserve space for glass icons */
+  padding-top: 96px;    /* height of top glass icons */
+  padding-bottom: 96px; /* height of bottom glass icons */
+
+  box-sizing: border-box;
+}
+
+.routes {
+  width: 100%;
+  max-width: 800px;
+
+  /* optional safety */
+  max-height: calc(100vh - 192px);
+  overflow-y: auto;
+}

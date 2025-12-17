@@ -8,7 +8,7 @@ export function AboutMe(){
                     <p className="text-lg md:text-xl lg:text-3xl text-white tracking-tighter font-semibold">
 
                             My name is Robert Fanzutti<br/>
-                            I am a software engineer Trained in spring boot and react
+                            Lorem ipsum dolor sit amet consectetur adipisicing 
 
 
                     </p>

@@ -10,6 +10,7 @@ import { FaHome, FaUser, FaCog, FaInfo, FaFolderOpen } from "react-icons/fa";
 import GlassIcons from './components/glassicons'
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { AboutMe } from './components/aboutMe'
+import { Projects } from './components/projects'
 //b1544f
 
 function App() {
@@ -27,9 +28,9 @@ const socialItems = [
 
 
   const [mobile, setMobile] = useState(true)
-  const [classForIcons, setClassForIcons] = useState('grid gap-[5em] grid-cols-3 md:grid-cols-3 mx-auto py-[3em] overflow-visible relative z-10 p-10')
-  const [classForContainer, setClassForContainer] = useState("absolute inset-0 overflow-y-auto")
-  const [classForGlassCont, setClassForGlassCont] = useState("absolute z-20 px-5")
+  const [classForIcons, setClassForIcons] = useState('grid xs:gap-[5em] grid-cols-3 py-[3em] overflow-visible relative z-10 justify-self-start')
+  const [classForContainer, setClassForContainer] = useState("relative min-h-screen w-full overflow-y-auto z-10")
+  const [classForGlassCont, setClassForGlassCont] = useState("absolute z-20")
   const items = [
     {
       label: "Home",
@@ -47,25 +48,15 @@ const socialItems = [
       label: "Projects",
       icon: <FaFolderOpen />,
       color: "clear",
-      to: "/about"
+      to: "/projects"
     },
 ];
-
-  useEffect(()=>{
-    if(500>window.innerWidth){
-      setMobile(false)
-      setClassForIcons('grid gap-[1em] grid-cols-3 md:grid-cols-3 mx-auto py-[3em] overflow-visible relative z-10 p-1')
-      setClassForContainer('flex justify-center items-start h-screen')
-      setClassForGlassCont('absolute z-20')
-    }
-  },[])
 
   return (
     <>
       <HashRouter>
-        <div className={classForContainer}>
       
-          {mobile&&<div className="absolute inset-0 z-0 flex-grow overflow-y-auto">
+          {mobile&&<div className="fixed inset-0 z-0 flex-grow overflow-y-auto xs:visible invisible ">
             <Silk
               speed={3}
               scale={0.85}
@@ -74,18 +65,19 @@ const socialItems = [
               rotation={2.78}
             />
           </div>}
-          <div className={classForGlassCont}>
-            <GlassIcons items={items} className={classForIcons}/>
+          <div className='relative z-20 flex flex-col items-center'>
+            <div className='absolute z-20'>
+              <GlassIcons items={items} className='grid xs:gap-[5em] grid-cols-3 py-[3em] overflow-visible relative z-10 justify-self-start'/>
+            </div>
+            
+            <div className=''>
+              <Routes>
+                <Route path='/' element={<Contacts/>}/>
+                <Route path='/about' element={<AboutMe/>}/>
+                <Route path='projects' element={<Projects/>}/>
+              </Routes>
+            </div>
           </div>
-          
-          
-            <Routes>
-              <Route path='/' element={<Contacts/>}/>
-              <Route path='/about' element={<AboutMe/>}/>
-            </Routes>
-          
-          
-        </div>
       </HashRouter>
     </>
   )

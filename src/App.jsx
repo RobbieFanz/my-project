@@ -25,6 +25,12 @@ const socialItems = [
   { label: 'GitHub', link: 'https://github.com' },
   { label: 'LinkedIn', link: 'https://linkedin.com' }
 ];
+
+
+  const [mobile, setMobile] = useState(true)
+  const [classForIcons, setClassForIcons] = useState('grid xs:gap-[5em] grid-cols-3 py-[3em] overflow-visible relative z-10 justify-self-start')
+  const [classForContainer, setClassForContainer] = useState("relative min-h-screen w-full overflow-y-auto z-10")
+  const [classForGlassCont, setClassForGlassCont] = useState("absolute z-20")
   const items = [
     {
       label: "Home",
@@ -50,7 +56,7 @@ const socialItems = [
     <>
       <HashRouter>
       
-          <div className="fixed inset-0 z-0 flex-grow overflow-y-auto xs:visible invisible ">
+          {mobile&&<div className="fixed inset-0 z-0 flex-grow overflow-y-auto xs:visible invisible ">
             <Silk
               speed={3}
               scale={0.85}
@@ -58,13 +64,13 @@ const socialItems = [
               noiseIntensity={0.1}
               rotation={2.78}
             />
-          </div>
-          <div className='grid grid-flow-col grid-rows-4 items-center'>
-            <div className='z-20 row-span-1'>
-              <GlassIcons items={items} className='grid xs:gap-[5em] grid-cols-3 py-[3em] z-10 w-65 xs:w-100'/>
+          </div>}
+          <div className='relative z-20 flex flex-col items-center'>
+            <div className='absolute z-20'>
+              <GlassIcons items={items} className='grid xs:gap-[5em] grid-cols-3 py-[3em] overflow-visible relative z-10 justify-self-start'/>
             </div>
             
-            <div className='sm:row-span-3 row-span-1'>
+            <div className=''>
               <Routes>
                 <Route path='/' element={<Contacts/>}/>
                 <Route path='/about' element={<AboutMe/>}/>

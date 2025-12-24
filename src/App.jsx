@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Aurora from './components/aurora'
 import { Contacts } from './components/contacts'
-import LightPillar from './components/lightpillar'
 import Silk from './components/silk'
-import GlassSurface from './components/glasssurface'
 import { FaHome, FaUser, FaCog, FaInfo, FaFolderOpen } from "react-icons/fa";
 import GlassIcons from './components/glassicons'
 import { HashRouter, Routes, Route } from 'react-router-dom';

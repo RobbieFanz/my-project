@@ -1,45 +1,4 @@
-import React, { useEffect, useRef, useState, useId } from 'react';
-
-export interface GlassSurfaceProps {
-  children?: React.ReactNode;
-  width?: number | string;
-  height?: number | string;
-  borderRadius?: number;
-  borderWidth?: number;
-  brightness?: number;
-  opacity?: number;
-  blur?: number;
-  displace?: number;
-  backgroundOpacity?: number;
-  saturation?: number;
-  distortionScale?: number;
-  redOffset?: number;
-  greenOffset?: number;
-  blueOffset?: number;
-  xChannel?: 'R' | 'G' | 'B';
-  yChannel?: 'R' | 'G' | 'B';
-  mixBlendMode?:
-    | 'normal'
-    | 'multiply'
-    | 'screen'
-    | 'overlay'
-    | 'darken'
-    | 'lighten'
-    | 'color-dodge'
-    | 'color-burn'
-    | 'hard-light'
-    | 'soft-light'
-    | 'difference'
-    | 'exclusion'
-    | 'hue'
-    | 'saturation'
-    | 'color'
-    | 'luminosity'
-    | 'plus-darker'
-    | 'plus-lighter';
-  className?: string;
-  style?: React.CSSProperties;
-}
+import { useEffect, useRef, useState, useId } from 'react';
 
 const useDarkMode = () => {
   const [isDark, setIsDark] = useState(false);
@@ -50,7 +9,7 @@ const useDarkMode = () => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     setIsDark(mediaQuery.matches);
 
-    const handler = (e: MediaQueryListEvent) => setIsDark(e.matches);
+    const handler = e => setIsDark(e.matches);
     mediaQuery.addEventListener('change', handler);
     return () => mediaQuery.removeEventListener('change', handler);
   }, []);
@@ -58,7 +17,7 @@ const useDarkMode = () => {
   return isDark;
 };
 
-const GlassSurface: React.FC<GlassSurfaceProps> = ({
+const GlassSurface = ({
   children,
   width = 200,
   height = 80,
@@ -85,12 +44,12 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
   const redGradId = `red-grad-${uniqueId}`;
   const blueGradId = `blue-grad-${uniqueId}`;
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const feImageRef = useRef<SVGFEImageElement>(null);
-  const redChannelRef = useRef<SVGFEDisplacementMapElement>(null);
-  const greenChannelRef = useRef<SVGFEDisplacementMapElement>(null);
-  const blueChannelRef = useRef<SVGFEDisplacementMapElement>(null);
-  const gaussianBlurRef = useRef<SVGFEGaussianBlurElement>(null);
+  const containerRef = useRef(null);
+  const feImageRef = useRef(null);
+  const redChannelRef = useRef(null);
+  const greenChannelRef = useRef(null);
+  const blueChannelRef = useRef(null);
+  const gaussianBlurRef = useRef(null);
 
   const isDarkMode = useDarkMode();
 
@@ -141,6 +100,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     });
 
     gaussianBlurRef.current?.setAttribute('stdDeviation', displace.toString());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     width,
     height,
@@ -171,6 +131,7 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     return () => {
       resizeObserver.disconnect();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -185,10 +146,12 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     return () => {
       resizeObserver.disconnect();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     setTimeout(updateDisplacementMap, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width, height]);
 
   const supportsSVGFilters = () => {
@@ -209,15 +172,15 @@ const GlassSurface: React.FC<GlassSurfaceProps> = ({
     return CSS.supports('backdrop-filter', 'blur(10px)');
   };
 
-  const getContainerStyles = (): React.CSSProperties => {
-    const baseStyles: React.CSSProperties = {
+  const getContainerStyles = () => {
+    const baseStyles = {
       ...style,
       width: typeof width === 'number' ? `${width}px` : width,
       height: typeof height === 'number' ? `${height}px` : height,
       borderRadius: `${borderRadius}px`,
       '--glass-frost': backgroundOpacity,
       '--glass-saturation': saturation
-    } as React.CSSProperties;
+    };
 
     const svgSupported = supportsSVGFilters();
     const backdropFilterSupported = supportsBackdropFilter();

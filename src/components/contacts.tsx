@@ -14,14 +14,14 @@ export function Contacts(){
                             This website is still under construction and is just a demo
 
                     </p>
-                    <p className="text-lg md:text-2xl lg:text-3xl text-white tracking-tighter">
+                    <div className="text-lg md:text-2xl lg:text-3xl text-white tracking-tighter">
                         <div className="flex">
                             <div className="mr-20">
                                 <a href="https://github.com/RobbieFanz" target="_blank" className="flex items-center gap-2 text-white"><img src={github} className="w-8"/>GitHub</a>
                             </div>
                             <a href="https://www.linkedin.com/in/robert-fanzutti-2b04752a4/" target="_blank" className="flex items-center gap-2 text-white"><img src={linkedin} className="w-8"/>LinkedIn</a>
                         </div>
-                    </p>
+                    </div>
                 </div>
             </div>
     )

@@ -3,7 +3,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { Contacts } from './components/contacts'
 import Silk from './components/silk'
-import { FaHome, FaUser, FaCog, FaInfo, FaFolderOpen } from "react-icons/fa";
+import { FaHome, FaInfo, FaFolderOpen } from "react-icons/fa";
 import GlassIcons from './components/glassicons'
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { AboutMe } from './components/aboutMe'

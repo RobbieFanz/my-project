@@ -6,7 +6,7 @@ import projectImg from '/project.png'
 
 export function Projects(){
     return(<>
-        <div className="pt-35">
+        <div className="pt-39">
         <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tighter text-center">Projects</h1>
         <SpotlightCard className="grid grid-cols-1 text-center xl:grid-cols-2 xl:text-left m-4 xs:m-4 md:m-15 gap-4 max-w-7xl justify-self-center justify-items-center" spotlightColor="rgba(255, 255, 255, 0.11)">
             <img className="col-span-1 rounded-md self-center" src={projectImg} alt="project" />

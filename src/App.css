@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
-@theme {  --breakpoint-xs: 31rem; }
+@theme {  --breakpoint-xs: 31rem;
+          --breakpoint-wl: 104rem;
+}
 
 .page {
   min-height: 100vh;

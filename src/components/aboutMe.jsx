@@ -14,13 +14,15 @@ import mavensvg from "/maven.svg";
 import vitesvg from "/vite.svg";
 import RVFsvg from "/RVF.svg";
 import central from "/Central_Connecticut_State_University_Seal.png"
+import SpotlightCard from "./SpotlightCard";
 
 
 
 export function AboutMe(){
-  const h1Classname="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tighter text-center mt-30"
-  const pClassname="text-lg md:text-2xl lg:text-4xl text-white tracking-tighter font-semibold text-center "
-  const svgClassname="w-10 ml-3"
+  const h1Classname="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-center "
+  const pClassname="text-lg xs:text-2xl md:text-3xl lg:text-4xl text-white tracking-tighter text-center "
+  const svgClassname="w-7 xs:w-10 ml-3"
+  const spotlightcarclass="mt-10 lg:mt-20 mx-3 sm:mx-5 md:mx-15 max-w-8xl justify-self-center "
      const frameworks = [
         {
           label: 'SpringBoot',
@@ -94,15 +96,16 @@ export function AboutMe(){
           svg: <img className={svgClassname} src={RVFsvg}/>
         },
     ];
-    return(
+    return(<>
 
-        <div className="pt-39">
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tighter text-center">About Me</h1>
-            <p className="text-lg md:text-4xl lg:text-6xl text-white tracking-tighter font-semibold text-center">
+            <h1 className="pt-39 text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tighter text-center">About Me</h1>
+            <p className="text-lg md:text-4xl lg:text-6xl text-white tracking-tighter text-center">
             some text about me
             </p>
+
+            <SpotlightCard className={spotlightcarclass}>
             <h1 className={h1Classname}>Skills</h1>
-            <div className="grid gap-4 grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 justify-items-center items-center">
+            <div className="grid gap-10 grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 justify-items-center items-center">
 
                 <div className="col-span-1">
                     <Skill items={langs} name='Languages' cols={'grid-cols-3'}/>
@@ -126,27 +129,39 @@ export function AboutMe(){
                     <Skill items={cloud} name='Cloud' cols={'grid-cols-1'}/>
                 </div>
             </div>
+            </SpotlightCard>
+            <SpotlightCard className={spotlightcarclass}>
+              <h1 className={h1Classname + " mb-7"}>Experience</h1>
+              <p className={pClassname+" pt-5"}>
+              Associate Software Engineer at Infosys Limited <br/>
+              June 2025 - Present<br/><br/>
+              Recieved extensive training in Spring Boot React and SQL. Completed AI focused trainings for Go To Market Team        
+              </p>
+            </SpotlightCard>
 
-            <h1 className={h1Classname}>Experience</h1>
-            <p className={pClassname}>
-            Associate Software Engineer at Infosys Limited <br/>
-            June 2025 - Present
-            </p>
+            <div className="grid grid-cols-1 2xl:grid-cols-2 mb-50 mt-10 lg:mt-20 gap-10 lg:gap-20 px-3 sm:px-5 md:px-15">
+              <SpotlightCard className="">
+                <h1 className={h1Classname}>Certifications</h1>
+                <p className={pClassname + "mt-5"}>
+                Infosys Certified Spring Associate<br/><br/>
+                Infosys Certified React Professional<br/><br/>
+                </p>
+              </SpotlightCard>
 
-            <h1 className={h1Classname}>Certifications</h1>
-            <p className={pClassname + "mt-5"}>
-            Infosys Certified Spring Associate<br/><br/>
-            Infosys Certified React Professional<br/><br/>
-            </p>
-
-            <h1 className={h1Classname}>Education</h1>
-            <div className={pClassname + "mb-30 mx-20"}>
-            <div className="flex items-center text-center justify-self-center">Central Connecticut State University <img className={svgClassname} src={central}/></div>
-            Bachelor of science in computer science honors <br/>
-            Minor in mathematics <br/>
-            Graduated May 2025
+              <SpotlightCard className="">
+                <h1 className={h1Classname}>Education</h1>
+                <div className={"text-sm xs:text-lg md:text-2xl lg:text-3xl 2xl:text-2xl wl:text-3xl  text-white tracking-tighter " + "mt-5 grid grid-cols-3 items-center gap-4 mx-auto max-w-4xl"}>
+                  <img className="w-20 xs:w-30 md:w-40 col-span-1 justify-self-end" src={central}/>
+                  <p className="col-span-2 text-left">
+                    Central Connecticut State University<br/>
+                    B.S. in Computer Science Honors <br/>
+                    Minor in Mathematics <br/>
+                    Graduated May 2025
+                  </p>
+                </div>
+              </SpotlightCard>
             </div>
-        </div>
+            </>
     )
 
 }
